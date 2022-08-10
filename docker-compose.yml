@@ -1,16 +1,13 @@
-version: '3.8'
 services:
-
-  postgres:
-    image: postgres:latest
+  db:
+    image: mysql:5.7
     restart: always
+    command: '--query_cache_type=0 --query_cache_size=0'
     environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=strongpassword
-    volumes:
-      - postgres:/var/lib/postgresql/data
+      MYSQL_ROOT_PASSWORD: 'strongpassword'
     ports:
-      - '5430:5432'
-
+      - '3306:3306'
+    volumes:
+      - db:/var/lib/mysql
 volumes:
-  postgres:
+  db:
