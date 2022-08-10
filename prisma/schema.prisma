@@ -12,6 +12,4 @@ model User {
   firstName String
   lastName  String
   email     String
-
-  @@index(fields: [firstName])
 }
