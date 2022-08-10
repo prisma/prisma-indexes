@@ -24,7 +24,7 @@ npm i
 ## Create and seed the database
 
 ```
-npm run seed
+npx prisma db seed
 ```
 
 ## Next steps
