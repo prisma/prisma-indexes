@@ -12,6 +12,7 @@
     "pino-pretty": "8.1.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "7.4.0",
     "@types/node": "16.11.47",
     "prisma": "4.2.0",
     "ts-node": "10.9.1",

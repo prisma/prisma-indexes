@@ -1,13 +1,21 @@
 import { PrismaClient } from '@prisma/client'
-import data from './users.json'
+import { faker } from '@faker-js/faker'
 const prisma = new PrismaClient()
+
+const data = Array.from({ length: 500000 }).map(() => ({
+  firstName: faker.name.firstName(),
+  lastName: faker.name.lastName(),
+  email: faker.internet.email(),
+}))
 
 async function main() {
   console.log(`📻 Elevator music cues..`)
-  const response = await prisma.user.createMany({
-    // @ts-ignore
-    data,
-  })
+  const [_,response] = await prisma.$transaction([
+    prisma.user.deleteMany(),
+    prisma.user.createMany({
+      data,
+    })
+  ])
   console.log(`${response.count} records created`)
 }
 
