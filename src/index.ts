@@ -1,15 +1,21 @@
 import fastify from 'fastify'
+import pino from 'pino'
 import { Prisma, PrismaClient } from '@prisma/client'
 
 const app = fastify()
+const logger = pino({
+  transport: {
+    target: 'pino-pretty'
+  }
+})
 const prisma = new PrismaClient({
   log: [{ emit: "event", level: "query", },
   ],
 })
 
 prisma.$on("query", async (e) => {
-  console.log(`Query: ${e.query}`)
-  console.log(`Params: ${e.params}`)
+  logger.info(`Query: ${e.query}`)
+  logger.info(`Params: ${e.params}`)
 });
 
 prisma.$use(async (params, next) => {
@@ -17,7 +23,7 @@ prisma.$use(async (params, next) => {
   const result = await next(params)
   const after = Date.now()
 
-  console.log(`Query ${params.model}.${params.action} took ${after - before}ms`)
+  logger.info(`Query took ${after - before}ms`)
   return result
 })
 
