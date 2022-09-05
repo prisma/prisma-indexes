@@ -2,21 +2,24 @@ import { PrismaClient } from '@prisma/client'
 import { faker } from '@faker-js/faker'
 const prisma = new PrismaClient()
 
-const data = Array.from({ length: 500000 }).map(() => ({
-  firstName: faker.name.firstName(),
-  lastName: faker.name.lastName(),
-  email: faker.internet.email(),
-}))
-
+const data = Array.from({ length: 500000 }).map(() => {
+  const firstName = faker.name.firstName()
+  const lastName = faker.name.lastName()
+  const email = faker.internet.email(firstName, lastName)
+  
+  return {
+    firstName, lastName, email
+  }
+})
 async function main() {
   console.log(`📻 Elevator music cues..`)
-  const [_,response] = await prisma.$transaction([
+  const [_, users] = await prisma.$transaction([
     prisma.user.deleteMany(),
     prisma.user.createMany({
       data,
     })
   ])
-  console.log(`${response.count} records created`)
+  console.log(`${users.count} records created`)
 }
 
 main()
