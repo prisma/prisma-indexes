@@ -43,13 +43,13 @@ app.get<{
     }
   } : {}
 
-  const posts = await prisma.user.findMany({
+  const users = await prisma.user.findMany({
     where: {
       ...filter
     }
   })
 
-  res.send(posts)
+  res.send(users)
 })
 
 const start = async () => {
