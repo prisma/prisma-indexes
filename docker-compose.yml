@@ -1,13 +1,17 @@
+version: '3.8'
 services:
-  db:
-    image: mysql:5.7
+  # URI=postgres://admin:strongpassword@localhost:5430/events
+
+  postgres:
+    image: postgres:14.1
     restart: always
-    command: '--query_cache_type=0 --query_cache_size=0'
     environment:
-      MYSQL_ROOT_PASSWORD: 'strongpassword'
-    ports:
-      - '3306:3306'
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=strongpassword
     volumes:
-      - db:/var/lib/mysql
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - '5430:5432'
+
 volumes:
-  db:
+  postgres:
