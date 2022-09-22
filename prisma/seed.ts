@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client'
 import { faker } from '@faker-js/faker'
 const prisma = new PrismaClient()
 
-const data = Array.from({ length: 500000 }).map(() => {
+const data = Array.from({ length: 1000000 }).map(() => {
   const firstName = faker.name.firstName()
   const lastName = faker.name.lastName()
   const email = faker.internet.email(firstName, lastName)
