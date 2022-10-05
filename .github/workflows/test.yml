@@ -10,8 +10,8 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: strongpassword
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -20,7 +20,7 @@ jobs:
         ports:
           - 5432:5432
     env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/users-db
+      DATABASE_URL: postgresql://root:strongpassword@localhost:5432/users-db
 
     steps:
       - uses: actions/checkout@v3
