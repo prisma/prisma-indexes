@@ -6,7 +6,7 @@
     "dev": "ts-node-dev src/index.ts"
   },
   "dependencies": {
-    "@prisma/client": "5.2.0",
+    "@prisma/client": "5.3.0",
     "fastify": "4.23.1",
     "pino": "8.15.1",
     "pino-pretty": "10.2.0"
@@ -14,7 +14,7 @@
   "devDependencies": {
     "@faker-js/faker": "8.0.2",
     "@types/node": "18.17.15",
-    "prisma": "5.2.0",
+    "prisma": "5.3.0",
     "ts-node": "10.9.1",
     "ts-node-dev": "2.0.0",
     "typescript": "5.2.2"
