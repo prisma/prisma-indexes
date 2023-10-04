@@ -9,7 +9,7 @@
     "@prisma/client": "5.3.1",
     "fastify": "4.23.2",
     "pino": "8.15.4",
-    "pino-pretty": "10.2.2"
+    "pino-pretty": "10.2.3"
   },
   "devDependencies": {
     "@faker-js/faker": "8.1.0",
