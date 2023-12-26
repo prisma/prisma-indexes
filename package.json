@@ -8,7 +8,7 @@
   "dependencies": {
     "@prisma/client": "5.7.1",
     "fastify": "4.25.2",
-    "pino": "8.17.1",
+    "pino": "8.17.2",
     "pino-pretty": "10.3.0"
   },
   "devDependencies": {
